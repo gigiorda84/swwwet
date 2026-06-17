@@ -4,21 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A single-file static promotional landing page for **The Sweet Life Society**, an Italian party band (booking/press microsite). There is no build system, no package manager, no dependencies, and no tests — everything lives in [sweet-life-society.html](sweet-life-society.html) (HTML + inline `<style>` + one inline `<script>`), served alongside the `assets/` folder.
+A single-file static promotional landing page for **The Sweet Life Society**, an Italian party band (booking/press microsite). There is no build system, no package manager, no dependencies, and no tests — everything lives in [index.html](index.html) (HTML + inline `<style>` + one inline `<script>`), served alongside the `assets/` folder. The site is deployed on Vercel at the custom domain `sweetlifesociety.com`; every push to `main` triggers a redeploy.
 
 ## Running / previewing
 
 Open the file directly, or serve the folder so relative `assets/` paths and the audio player resolve correctly:
 
 ```bash
-python3 -m http.server 8000   # then open http://localhost:8000/sweet-life-society.html
+python3 -m http.server 8000   # then open http://localhost:8000/
 ```
 
 Use a server (not `file://`) when testing audio playback, the IntersectionObserver reveal, or anything that can be blocked by the `file://` origin.
 
 ## Architecture & conventions
 
-The page is built as one document with three parts, all inside `sweet-life-society.html`:
+The page is built as one document with three parts, all inside `index.html`:
 
 - **`:root` CSS custom properties** (top of `<style>`) are the single source of design truth — `--yellow`, `--ink`, `--blue`, `--paper`, `--night`, `--max` (content width), `--shadow`. Change the palette/layout here, not in individual rules. The aesthetic is a press-kit / album-cover print style: hard offset shadows (`6px 6px 0`), halftone dot texture (`.halftone::after`), stepped text-shadows, slight rotations, `Archivo Black` display type.
 - **Sections** are ordered top-to-bottom and keyed by `id` (`#festivals`, `#live`, `#photos`, `#instagram`, `#show`, `#music`, `#booking`); the fixed `<nav>` anchors link to these ids. Each section follows the same skeleton: `<section id><div class="inner"><span class="label">…<h2>…`. The `.inner` wrapper is what gets the scroll-reveal animation.
