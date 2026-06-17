@@ -301,6 +301,12 @@
     display:flex;align-items:center;justify-content:center;transition:all .15s ease;
   }
   .ab-play:hover{background:var(--yellow);color:var(--ink)}
+  .ab-skip{
+    flex:0 0 auto;width:34px;height:40px;border:2.5px solid var(--yellow);
+    background:transparent;color:var(--yellow);font-size:.8rem;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:all .15s ease;
+  }
+  .ab-skip:hover{background:var(--yellow);color:var(--ink)}
   .ab-meta{flex:0 0 auto;min-width:0}
   .ab-track{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:.04em;color:var(--yellow);line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .ab-sub{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(243,234,216,.55);font-weight:700}
@@ -346,9 +352,10 @@
 <body>
 
 <div class="audiobar" id="audiobar">
-  <button class="ab-play" id="ab-play" aria-label="Play Why Not">▶</button>
+  <button class="ab-play" id="ab-play" aria-label="Play">▶</button>
+  <button class="ab-skip" id="ab-next" aria-label="Next track">⏭</button>
   <div class="ab-meta">
-    <div class="ab-track">Why Not</div>
+    <div class="ab-track" id="ab-title">Why Not</div>
     <div class="ab-sub">The Sweet Life Society</div>
   </div>
   <div class="ab-progress" id="ab-progress" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -523,8 +530,8 @@
         <p>Guitar and bass blending perfectly on tracks built live with drum machines and samplers.</p>
       </div>
       <div class="show-card">
-        <h3>Two MCs</h3>
-        <p>The powerful voices of Giulietta Passera and Moreno Turi aka Emenél front the stage.</p>
+        <h3>Three MCs</h3>
+        <p>The powerful voices of Giulietta Passera, Avex and Moreno Turi aka Emenél front the stage.</p>
       </div>
       <div class="show-card">
         <h3>Festival Machine</h3>
@@ -608,8 +615,16 @@
   }
   // ---------- fixed top audio bar ----------
   (function(){
-    var audio = new Audio('assets/audio/why-not.mp3');
+    var tracks = [
+      { title:'Why Not',         src:'assets/audio/why-not.mp3' },
+      { title:'Down Low',        src:'assets/audio/DOWN LOW MIX.wav' },
+      { title:'Stand Rise Speak',src:'assets/audio/STAND RISE SPEAK ORIGINAL.mp3' }
+    ];
+    var i = 0;
+    var audio = new Audio(tracks[0].src);
     var btn = document.getElementById('ab-play');
+    var nextBtn = document.getElementById('ab-next');
+    var title = document.getElementById('ab-title');
     var bar = document.getElementById('ab-bar');
     var prog = document.getElementById('ab-progress');
     var time = document.getElementById('ab-time');
@@ -619,14 +634,22 @@
       var m = Math.floor(s/60), sec = Math.floor(s%60);
       return m + ':' + (sec<10?'0':'') + sec;
     }
+    function play(){
+      audio.play().then(function(){ btn.textContent='❚❚'; })
+      .catch(function(){ time.textContent='audio not found'; });
+    }
+    function load(index, autoplay){
+      i = (index + tracks.length) % tracks.length;
+      audio.src = tracks[i].src;
+      title.textContent = tracks[i].title;
+      bar.style.width = '0%';
+      time.textContent = '0:00 / 0:00';
+      if (autoplay) play(); else btn.textContent='▶';
+    }
     btn.addEventListener('click', function(){
-      if (audio.paused){
-        audio.play().then(function(){ btn.textContent='❚❚'; })
-        .catch(function(){ time.textContent='audio not found'; });
-      } else {
-        audio.pause(); btn.textContent='▶';
-      }
+      if (audio.paused){ play(); } else { audio.pause(); btn.textContent='▶'; }
     });
+    nextBtn.addEventListener('click', function(){ load(i + 1, true); });
     audio.addEventListener('timeupdate', function(){
       if (audio.duration){
         var pct = (audio.currentTime/audio.duration)*100;
@@ -638,7 +661,7 @@
     audio.addEventListener('loadedmetadata', function(){
       time.textContent = '0:00 / ' + fmt(audio.duration);
     });
-    audio.addEventListener('ended', function(){ btn.textContent='▶'; bar.style.width='0%'; });
+    audio.addEventListener('ended', function(){ load(i + 1, true); });
     prog.addEventListener('click', function(e){
       if (!audio.duration) return;
       var r = prog.getBoundingClientRect();
