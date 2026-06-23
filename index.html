@@ -273,6 +273,21 @@
   .show-card{border:3px solid var(--ink);padding:24px;background:#fff;box-shadow:var(--shadow)}
   .show-card h3{font-family:'Archivo Black',sans-serif;font-size:1.2rem;text-transform:uppercase;margin-bottom:8px}
   .show-card p{font-size:.95rem}
+  /* three live formats */
+  .formats-head{margin-top:64px;max-width:680px}
+  .formats-title{font-family:'Archivo Black',sans-serif;font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1;text-transform:uppercase;margin:14px 0 10px}
+  .formats-head p{font-size:1.02rem;font-weight:500}
+  .formats-grid{margin-top:36px;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:stretch}
+  .format-card{position:relative;display:flex;flex-direction:column;border:3px solid var(--ink);background:#fff;box-shadow:var(--shadow);padding:26px 24px 0;overflow:hidden}
+  .format-num{font-family:'Archivo Black',sans-serif;font-size:2.2rem;line-height:1;color:var(--blue);-webkit-text-stroke:1px var(--ink);text-shadow:3px 3px 0 var(--ink)}
+  .format-card h4{font-family:'Archivo Black',sans-serif;font-size:1.35rem;text-transform:uppercase;line-height:1.04;margin:12px 0 4px}
+  .format-size{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:3px 9px}
+  .format-card>p{font-size:.93rem;margin:16px 0 18px}
+  .format-for{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+  .format-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+  .format-tags span{font-size:.72rem;font-weight:600;border:2px solid var(--ink);padding:3px 9px;background:var(--paper)}
+  .format-dur{margin:auto -24px 0;background:var(--ink);color:var(--paper);font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;text-align:center}
+  .format-dur b{color:var(--yellow)}
 
   /* ---------- MUSIC ---------- */
   #music{background:var(--ink);color:var(--paper)}
@@ -520,25 +535,43 @@
   <div class="inner">
     <span class="label">About us</span>
     <h2>9 musicians. One party.</h2>
-    <p class="lead">Born in Torino in 2008 from the encounter of producers Gabriele Concas and Matteo Marini, the project grew into the Sweet Life Orchestra: a refined, elegant and surprising mix where electro swing and vintage melodies meet Caribbean sounds, pure US hip hop and the most powerful UK bass.</p>
-    <p style="margin-top:14px;font-style:italic;font-size:.98rem;opacity:.75;max-width:680px">Among the pioneers of the electro swing movement in Italy and across Europe.</p>
-    <div class="show-grid">
-      <div class="show-card">
-        <h3>Brass Section</h3>
-        <p>A rich, powerful live brass band driving every drop — the signature sound of the show.</p>
-      </div>
-      <div class="show-card">
-        <h3>Live Electronics</h3>
-        <p>Guitar and bass blending perfectly on tracks built live with drum machines and samplers.</p>
-      </div>
-      <div class="show-card">
-        <h3>Three MCs</h3>
-        <p>The powerful voices of Giulietta Passera, Avex and Moreno Turi aka Emenél front the stage.</p>
-      </div>
-      <div class="show-card">
-        <h3>Festival Machine</h3>
-        <p>15+ years of international touring, from main stages to sweaty club nights across Europe.</p>
-      </div>
+    <p class="lead">Born in Torino in 2008 from the encounter of producers Gabriele Concas and Matteo Marini, The Sweet Life Society has spent over fifteen years bringing its blend of bass music, hip hop, reggae, dub, jazz, brass and electronic sounds to festivals, clubs and venues across Europe — from Glastonbury, Boomtown and Lowlands to Paradiso Amsterdam and Village Underground London.</p>
+    <p style="margin-top:14px;font-style:italic;font-size:.98rem;opacity:.75;max-width:680px">At the heart of the project, one simple idea: <strong>Good Vibes for the Masses</strong> — music as a tool for human connection, celebration and collective energy.</p>
+
+    <!-- THREE LIVE FORMATS — punto di forza chiave: stesso progetto, tre formati per contesti e budget diversi -->
+    <div class="formats-head">
+      <span class="label">Three live formats</span>
+      <h3 class="formats-title">One project, three ways to book it</h3>
+      <p>Today The Sweet Life Society performs in three different formats, designed for different contexts and budgets — from main-stage festivals to late-night clubs and intimate dancefloors.</p>
+    </div>
+    <div class="formats-grid">
+      <article class="format-card">
+        <span class="format-num">01</span>
+        <h4>Full Live Band</h4>
+        <span class="format-size">9 musicians on stage</span>
+        <p>The original and most complete Sweet Life Society experience. A powerful live show fusing MCs and vocalists, a full brass section, live instruments, drum machines, samplers and electronic production — vintage sounds, reggae, hip hop, dub and bass music in one.</p>
+        <div class="format-for">Perfect for</div>
+        <div class="format-tags"><span>Festivals</span><span>Concert venues</span><span>Main stages</span><span>Cultural events</span></div>
+        <div class="format-dur">Duration · <b>75–90 min</b></div>
+      </article>
+      <article class="format-card">
+        <span class="format-num">02</span>
+        <h4>Sweet Life Soundsystem</h4>
+        <span class="format-size">4–5 musicians on stage</span>
+        <p>A more electronic and flexible version, built around a DJ and live dub setup and enriched by live vocals, MCs and brass. Original tracks meet the best of the global bass scene — drum &amp; bass, dub, reggae, tropical and UK bass — evolving from a concert into a dancefloor journey.</p>
+        <div class="format-for">Perfect for</div>
+        <div class="format-tags"><span>Clubs</span><span>Electronic festivals</span><span>Alternative venues</span><span>Late-night stages</span></div>
+        <div class="format-dur">Duration · <b>90 min – 3 hrs</b></div>
+      </article>
+      <article class="format-card">
+        <span class="format-num">03</span>
+        <h4>DJ Set</h4>
+        <span class="format-size">Gabriele Concas &amp; Matteo Marini</span>
+        <p>Before touring as a live band, the duo spent years running parties, club nights and festival stages. The DJ Set distils fifteen-plus years of musical research into an eclectic, high-energy selection — global beats, bass music, reggae, funk, hip hop, tropical sounds and dancefloor classics.</p>
+        <div class="format-for">Perfect for</div>
+        <div class="format-tags"><span>Intimate venues</span><span>Large festival dancefloors</span></div>
+        <div class="format-dur">Duration · <b>1–4 hrs</b></div>
+      </article>
     </div>
   </div>
 </section>
