@@ -143,6 +143,8 @@
     animation:floaty 7s ease-in-out infinite;
   }
   .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+  /* hero video di sfondo: riempie il blob 7/5 senza bande nere */
+  .hero-photo iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:128%;height:100%;border:0;pointer-events:none}
   /* se usate un PNG già scontornato: aggiungere la classe "cutout" a .hero-photo */
   .hero-photo.cutout{
     border:none;border-radius:0;box-shadow:none;overflow:visible;
@@ -378,9 +380,9 @@
 
 <header class="halftone">
   <div class="sticker" style="z-index:3">★ Est. 2008<br>Torino — Italy ★</div>
-  <!-- Foto hero: band frontale -->
+  <!-- Video hero: clip live di sfondo (autoplay muto in loop) -->
   <div class="hero-photo">
-    <img src="assets/img/eurovision_village2022.JPG" alt="The Sweet Life Society — the full band on stage">
+    <iframe src="https://www.youtube-nocookie.com/embed/YjKuUuYVkHw?autoplay=1&mute=1&loop=1&playlist=YjKuUuYVkHw&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1" title="The Sweet Life Society — live" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
   <h1 class="rise d2">Good<br>Vibes<br>for the<br>Masses</h1>
   <p class="tagline rise d3"><b>The hottest Italian party band</b> — vintage grooves, Caribbean flavours, US hip hop beats and powerful UK bass, delivered by <strong>9 musicians on stage</strong>.</p>
@@ -460,15 +462,15 @@
 <!-- LIVE VIDEOS -->
 <section id="live">
   <div class="inner">
-    <span class="label">Watch the live show</span>
+    <span class="label">Video</span>
     <h2>See it to believe it</h2>
     <p class="lead">An explosive party machine built around human connection: powerful brass, live electronics, two MCs and a dancefloor that never stops.</p>
     <div class="video-featured">
-      <iframe src="https://www.youtube-nocookie.com/embed/uIvQiyc4yEo" title="The Sweet Life Society — Better Than That (Official Video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/gumofJhei9I" title="The Sweet Life Society — Live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>
     <div class="video-row">
       <div class="video-small">
-        <iframe src="https://www.youtube-nocookie.com/embed/rhW_yCqplN4" title="The Sweet Life Society — Hard On (Official Video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/EfbewIQzFqQ" title="The Sweet Life Society — Live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video-small">
         <iframe src="https://www.youtube-nocookie.com/embed/HIMtRRPs9nc" title="The Sweet Life Society — My Sound" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
